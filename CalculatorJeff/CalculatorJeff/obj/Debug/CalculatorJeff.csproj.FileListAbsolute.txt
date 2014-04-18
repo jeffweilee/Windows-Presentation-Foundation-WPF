@@ -1,0 +1,14 @@
+c:\users\nccumisyc\documents\visual studio 2013\Projects\CalculatorJeff\CalculatorJeff\bin\Debug\CalculatorJeff.exe.config
+c:\users\nccumisyc\documents\visual studio 2013\Projects\CalculatorJeff\CalculatorJeff\obj\Debug\CalculatorJeff.csprojResolveAssemblyReference.cache
+c:\users\nccumisyc\documents\visual studio 2013\Projects\CalculatorJeff\CalculatorJeff\obj\Debug\MainWindow.baml
+c:\users\nccumisyc\documents\visual studio 2013\Projects\CalculatorJeff\CalculatorJeff\obj\Debug\MainWindow.g.cs
+c:\users\nccumisyc\documents\visual studio 2013\Projects\CalculatorJeff\CalculatorJeff\obj\Debug\App.g.cs
+c:\users\nccumisyc\documents\visual studio 2013\Projects\CalculatorJeff\CalculatorJeff\obj\Debug\CalculatorJeff_MarkupCompile.cache
+c:\users\nccumisyc\documents\visual studio 2013\Projects\CalculatorJeff\CalculatorJeff\obj\Debug\CalculatorJeff.g.resources
+c:\users\nccumisyc\documents\visual studio 2013\Projects\CalculatorJeff\CalculatorJeff\obj\Debug\CalculatorJeff.Properties.Resources.resources
+c:\users\nccumisyc\documents\visual studio 2013\Projects\CalculatorJeff\CalculatorJeff\obj\Debug\CalculatorJeff.csproj.GenerateResource.Cache
+c:\users\nccumisyc\documents\visual studio 2013\Projects\CalculatorJeff\CalculatorJeff\bin\Debug\CalculatorJeff.exe
+c:\users\nccumisyc\documents\visual studio 2013\Projects\CalculatorJeff\CalculatorJeff\bin\Debug\CalculatorJeff.pdb
+c:\users\nccumisyc\documents\visual studio 2013\Projects\CalculatorJeff\CalculatorJeff\obj\Debug\CalculatorJeff.exe
+c:\users\nccumisyc\documents\visual studio 2013\Projects\CalculatorJeff\CalculatorJeff\obj\Debug\CalculatorJeff.pdb
+C:\Users\NCCUMISYC\Documents\Visual Studio 2013\Projects\CalculatorJeff\CalculatorJeff\obj\Debug\CalculatorJeff.AboutBox2.resources
