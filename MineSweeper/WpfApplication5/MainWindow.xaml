@@ -1,0 +1,141 @@
+﻿<Window x:Class="WpfApplication5.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        PreviewMouseDown="Window_PreviewMouseDown"
+        Title="Minesweeper" MinHeight="400" MinWidth="350" SizeToContent="Manual"
+        ResizeMode="CanResizeWithGrip" Background="#FFD16D6D" Foreground="#FFBDB7B7">
+    <FrameworkElement.Resources>
+        <Style x:Key="ButtonStyle1" TargetType="{x:Type Button}">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid>
+                            <Rectangle Fill="#00000000" Stroke="#00000000" StrokeEndLineCap="Round" StrokeLineJoin="Round"
+                         StrokeStartLineCap="Round" StrokeThickness="2" Cursor="Hand"/>
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding Control.HorizontalContentAlignment}"
+                                VerticalAlignment="{TemplateBinding Control.VerticalContentAlignment}"
+                                SnapsToDevicePixels="{TemplateBinding UIElement.SnapsToDevicePixels}" RecognizesAccessKey="true"
+                                Content=""/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="UIElement.IsFocused" Value="true"/>
+                            <Trigger Property="Button.IsDefaulted" Value="true"/>
+                            <Trigger Property="UIElement.IsMouseOver" Value="true"/>
+                            <Trigger Property="ButtonBase.IsPressed" Value="true"/>
+                            <Trigger Property="UIElement.IsEnabled" Value="false"/>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </FrameworkElement.Resources>
+    <DockPanel Name="dp01">
+        <Menu Name="menu1" DockPanel.Dock="Top" Height="24">
+            <Control.Background>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                    <GradientStop Color="#FFF6F6F6" Offset="0.25"/>
+                    <GradientStop Color="#FFEAE8E8" Offset="0.25"/>
+                    <GradientStop Color="#FFDCD9D9" Offset="0.952"/>
+                    <GradientStop Offset="1"/>
+                </LinearGradientBrush>
+            </Control.Background>
+            <MenuItem Header="MineSweeperGame(G)">
+                <MenuItem Click="MenuItem_Click" Header="New Game(_N)"/>
+                <Separator Margin="0"/>
+                <MenuItem Click="MenuItem_Click_5" Header="Exit(_X)"/>
+            </MenuItem>
+            <MenuItem Header="Help(_H)">
+                <MenuItem Click="MenuItem_Click_6" Header="About MineSweeper(_A)"/>
+            </MenuItem>
+        </Menu>
+        <StackPanel Name="sp01" DockPanel.Dock="Top" Orientation="Horizontal" Height="60">
+            <Canvas x:Name="timercanvas" HorizontalAlignment="Left" VerticalAlignment="Top" Width="336" Height="50" Margin="0,10,0,0">
+                <Canvas x:Name="TimerImg" Width="31.536" Height="29.372" Canvas.Left="88.612" Canvas.Top="3.977">
+                    <Path Fill="Coral"  Stretch="Fill" Stroke="Coral" StrokeEndLineCap="Round" StrokeLineJoin="Round"
+        				StrokeStartLineCap="Round" StrokeThickness="2" Width="26" Height="26"
+        				Data="M 7.4512,23.5986 C 7.4512,16.9686 12.8212,11.5986 19.4512,11.5986 26.0812,11.5986 31.4512,16.9686 31.4512,23.5986 31.4512,30.2286 26.0812,35.5986 19.4512,35.5986 12.8212,35.5986 7.4512,30.2286 7.4512,23.5986 Z"
+        				Canvas.Left="3" Canvas.Top="5"/>
+                    <Path Fill="Coral"  Stretch="Fill" Stroke="Coral" StrokeEndLineCap="Round" StrokeLineJoin="Round"
+        				StrokeStartLineCap="Round" StrokeThickness="2" Width="13.186" Height="12.056"
+        				Data="M 25.395,8.6187 C 31.002,12.5657 31.151,12.6737 33.315,15.4287 33.315,15.4287 36.305,11.3187 34.815,9.4487 33.315,7.5787 31.105,6.4387 29.195,6.2387 27.285,6.0287 25.395,8.6187 25.395,8.6187 Z"
+        				Canvas.Left="9" Canvas.Top="-4" RenderTransformOrigin="0.5,0.5">
+                        <Path.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="-35.006"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Path.RenderTransform>
+                    </Path>
+                    <Path Stretch="Fill" Stroke="Black" StrokeEndLineCap="Round" StrokeLineJoin="Round"
+        				StrokeStartLineCap="Round" StrokeThickness="2" Width="10.118" Height="10"
+        				Data="M 19.4512,16.5986 L 19.4512,24.5986 11.3332,24.5986 " Canvas.Left="6.638" Canvas.Top="9.372"/>
+                </Canvas>
+                <Canvas x:Name="bomb1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="27.129" Height="28.836"
+        			Canvas.Left="163" Canvas.Top="3.5">
+                    <Canvas Width="29" Height="30" Canvas.Left="1.286" Canvas.Top="0.609">
+                        <Path Fill="Red" Stretch="Fill" Stroke="Red" StrokeEndLineCap="Round" StrokeLineJoin="Round"
+        					StrokeStartLineCap="Round" StrokeThickness="2" Width="26" Height="26"
+        					Data="M 2.5356,19.8594 C 2.5356,13.2294 7.9056,7.8594 14.5356,7.8594 21.1656,7.8594 26.5356,13.2294 26.5356,19.8594 26.5356,26.4894 21.1656,31.8594 14.5356,31.8594 7.9056,31.8594 2.5356,26.4894 2.5356,19.8594 Z"
+        					Canvas.Left="-1" Canvas.Top="5"/>
+                        <Path Stretch="Fill" Stroke="Red" StrokeEndLineCap="Round" StrokeLineJoin="Round"
+        					StrokeStartLineCap="Round" StrokeThickness="2" Width="8" Height="8.2"
+        					Data="M 21.936,4.6592 L 19.536,7.8592 22.536,10.8592 25.536,6.8592 21.936,4.6592 Z"
+        					Canvas.Left="18.25" Canvas.Top="2.5"/>
+                        <Path Stretch="Fill" Stroke="Red" StrokeEndLineCap="Round" StrokeLineJoin="Round"
+        					StrokeStartLineCap="Round" StrokeThickness="2" Width="10.375" Height="13.769"
+        					Data="M 24.5356,4.8594 C 24.5356,4.8594 26.2056,2.1894 28.5356,4.8594 30.8656,7.5294 31.2056,3.5294 31.5356,1.8594 "
+        					Canvas.Left="12.75" Canvas.Top="-9.384" RenderTransformOrigin="0.5,0.5">
+                            <Path.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform ScaleX="-1"/>
+                                    <SkewTransform/>
+                                    <RotateTransform/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Path.RenderTransform>
+                        </Path>
+                    </Canvas>
+                </Canvas>
+                <Canvas x:Name="start1" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="29.416" Canvas.Top="6" Width="24"
+        			Height="28">
+                    <Grid Width="25" Height="31" Canvas.Left="-1" Canvas.Top="-2.5">
+                        <Button Click="Button_Click" Style="{DynamicResource ButtonStyle1}" Content="Button"/>
+                        <Path Fill="Chartreuse"  Stretch="Fill" Stroke="Chartreuse" StrokeEndLineCap="Round" StrokeLineJoin="Round"
+        					StrokeStartLineCap="Round" StrokeThickness="2"
+        					Data="M 7.9829,2.5752 L 20.7929,12.4752 C 21.5829,13.2952 21.5829,14.6152 20.7929,15.4342 L 7.9829,25.3352 C 7.1929,26.1652 5.9129,26.1652 5.1229,25.3352 L 5.1229,2.5752 C 5.9129,1.7452 7.1929,1.7452 7.9829,2.5752 Z"
+        					Margin="3.334,2.75,3.404,2.245" RenderTransformOrigin="0.507,0.5"/>
+                    </Grid>
+                </Canvas>
+                <TextBlock x:Name="timebox" Width="24" Height="20" FontSize="14.667" Text="0" TextAlignment="Center"
+        			Canvas.Left="123.25" Canvas.Top="13.75" FontFamily="Calibri" Foreground="#FF989898"
+        			RenderTransformOrigin="-0.077,0.477"/>
+                <TextBlock x:Name="textBox1" Height="20" Width="24" IsEnabled="false" TextAlignment="Center"
+        			Canvas.Left="199.5" Canvas.Top="14.5" Text="0" FontFamily="Calibri" FontSize="14.667"
+        			Foreground="#FF989898"/>
+                <Button Click="button1_Click" x:Name="button1" Height="13" Width="758" Focusable="false" Canvas.Top="-18" RenderTransformOrigin="0.5,0.5">
+                    <Button.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="-0.13"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Button.RenderTransform>
+                </Button>
+            </Canvas>
+        </StackPanel>
+        <UniformGrid x:Name="ugbox01" Margin="20,10,20,20" DockPanel.Dock="Bottom">
+            <UIElement.Effect>
+                <BlurEffect Radius="0" KernelType="Box"/>
+            </UIElement.Effect>
+            <Panel.Background>
+                <LinearGradientBrush EndPoint="0.921,0.907" StartPoint="0.062,0.069">
+                    <GradientStop Color="#FFF2F3F4" Offset="1"/>
+                    <GradientStop Color="White"/>
+                </LinearGradientBrush>
+            </Panel.Background>
+        </UniformGrid>
+    </DockPanel>
+</Window>
