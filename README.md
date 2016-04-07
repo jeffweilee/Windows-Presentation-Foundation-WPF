@@ -1,3 +1,3 @@
 # Windows-Presentation-Foundation Qorks
-## Calculator GUI
-## MineSweeper Game
+- GUI Calculator
+- GUI MineSweeper Game
