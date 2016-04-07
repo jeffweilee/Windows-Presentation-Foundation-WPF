@@ -1,4 +1,3 @@
-Windows-Presentation-Foundation-WPF-
-====================================
-
-WPF work
+# Windows-Presentation-Foundation Qorks
+## Calculator GUI
+## MineSweeper Game
